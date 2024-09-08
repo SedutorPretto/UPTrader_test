@@ -1,0 +1,22 @@
+{% load menu_tag %}
+
+<ul>
+    {% for node in menu %}
+        <li style="margin-left: {{ depth|add:0|multiply:20 }}px;">
+            <a href="{{ node.item.url }}"
+               class="{% if node.item == active_item %}active{% endif %}">
+                {{ node.item.cat }}
+            </a>
+            {% if node.children %}
+                <ul>
+                    {% include 'menu.html' with menu=node.children depth=depth|add:1 %}
+                </ul>
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
+
+
+
+
+

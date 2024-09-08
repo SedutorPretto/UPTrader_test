@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <style>
+        /* Базовые стили для меню */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 5px 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        /* Стиль для активного элемента меню */
+        .active {
+            font-weight: bold;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Welcome to My Website</h1>
+    </header>
+
+    <nav>
+        {% load menu_tag %}
+
+        {% for menu in menus %}
+            <h2>{{ menu.name }}</h2>
+            {% draw_menu menu.name %}
+        {% endfor %}
+    </nav>
+
+    <main>
+        <h2>Page Content</h2>
+        <!-- Основной контент страницы -->
+        {% block content %}
+        <p>This is where your page content goes.</p>
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2024 My Website</p>
+    </footer>
+
+</body>
+</html>
+
